@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sign_page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img
+        src="https://pbs.twimg.com/profile_images/870531254495490048/dw30PlMu_400x400.jpg"
+        alt=""
+      />
+    </header>
+    <div class="popup" id="popup">
+      <h1>login successfully.........</h1>
+      <button id="X">X</button>
+    </div>
+    <div class="container" id="container">
+      <form action="">
+        <div class="sign_page">
+          <h1><span>IndiaNic</span> Sign_In</h1>
+          <hr />
+
+          <label for="Email">Enter your Email:</label>
+          <input
+            type="email"
+            name=""
+            id="email3"
+            required
+            placeholder="Enter Your Email.."
+          />
+          <label for="Password">Enter your Password:</label>
+          <input
+            type="password"
+            name=""
+            id="password3"
+            required
+            placeholder="Enter Your Password.."
+          />
+
+          <button id="lo">Login</button>
+          <p href="" id="login">Create your acccont....</p>
+        </div>
+      </form>
+    </div>
+    <div class="container1" id="container1">
+      <div class="sign_page">
+        <h1><span>IndiaNic</span> Create Account</h1>
+        <hr />
+        <label for="name">Enter your name:</label>
+        <input
+          type="text"
+          name=""
+          id=""
+          required
+          placeholder="Enter Your Name.."
+        />
+        <label for="Email">Enter your Email:</label>
+        <input
+          type="email"
+          name=""
+          id="email"
+          required
+          placeholder="Enter Your Email.."
+        />
+        <label for="Password">Enter your Password:</label>
+        <input
+          type="password"
+          name=""
+          id="password"
+          required
+          placeholder="Enter Your Password.."
+        />
+        <label for="number">Enter your Mobile No.:</label>
+        <input
+          type="text"
+          name=""
+          id=""
+          required
+          placeholder="Enter Your Mobile No..."
+        />
+        <button id="create" onclick="CREATE()">Create</button>
+      </div>
+    </div>
+    <footer>
+    <p>&#169 this is an sign_page</p>
+    </footer>
+    <script>
+      let login = document.getElementById("login");
+      let create = document.getElementById("create");
+      let container = document.getElementById("container");
+      let container1 = document.getElementById("container1");
+
+      login.addEventListener("click", function () {
+        container.classList.add("none1");
+        container1.classList.add("none2");
+      });
+      create.addEventListener("click", function () {
+        container.classList.remove("none1");
+        container1.classList.remove("none2");
+      });
+
+      function CREATE() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        // console.log(email, password);
+        let email1 = localStorage.setItem("email", email);
+        let password1 = localStorage.setItem("password", password);
+      }
+      let popup = document.getElementById("popup");
+      let lo = document.getElementById("lo");
+      let X = document.getElementById("X");
+      lo.addEventListener("click", function (e) {
+        e.preventDefault();
+        let email2 = localStorage.getItem("email");
+        let password2 = localStorage.getItem("password");
+        console.log(email2, password2);
+        let email3 = document.getElementById("email3");
+        let password3 = document.getElementById("password3");
+        let email4 = email3.value;
+        let password4 = password3.value;
+
+        if (email4.length > 0 && password4.length > 0) {
+          if (email4 == email2 && password2 == password4) {
+            popup.classList.add("show");
+          } else {
+            alert("email and password invalid!!!!");
+          }
+        }
+        X.addEventListener("click", function () {
+          popup.classList.remove("show");
+        });
+        email3.value = "";
+        password3.value = "";
+      });
+    </script>
+  </body>
+</html>
